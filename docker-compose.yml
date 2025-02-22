@@ -1,0 +1,11 @@
+services:
+  postgres:
+    container_name: postgres
+    image: "postgres:14"
+    restart: always
+    ports:
+      - "5433:5432"
+    environment:
+      - 'POSTGRES_DB=kateteria'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
