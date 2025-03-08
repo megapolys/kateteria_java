@@ -1,0 +1,19 @@
+$pinky: #FF84C0;
+
+$color1: #FFDAB9;
+$color2: #FFE4E1;
+$color3: #FFF0F5;
+$color4: #DAA520;
+$color5: #FFFAFA;
+
+.pinky-color {
+  color: $pinky;
+}
+
+.btn-custom {
+  @include button-variant($pinky, darken($pinky, 7.5%), darken($pinky, 10%), lighten($pinky, 5%), lighten($pinky, 10%), darken($pinky, 30%));
+}
+
+.btn-outline-custom {
+  @include button-outline-variant($pinky, #ffffff, lighten($pinky, 5%), $pinky);
+}
