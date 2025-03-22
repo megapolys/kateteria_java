@@ -1,0 +1,2 @@
+GET http://{{host}}/api/cake
+Content-Type: application/json

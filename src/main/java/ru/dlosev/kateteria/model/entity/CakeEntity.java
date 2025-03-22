@@ -22,6 +22,9 @@ public class CakeEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cake_gen")
 	Long id;
 
+	@Column(name = "group_id")
+	Long groupId;
+
 	@Column(name = "uuid")
 	UUID uuid;
 
@@ -32,5 +35,5 @@ public class CakeEntity {
 	String description;
 
 	@Column(name = "cost")
-	double cost;
+	Integer cost;
 }

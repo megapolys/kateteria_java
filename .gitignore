@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Cakes ###
+src/resources/static/img/cakes
