@@ -1,2 +1,27 @@
 GET http://{{host}}/api/cake
 Content-Type: application/json
+
+### Response
+HTTP/1.1 200
+Content-Type: application/json
+
+[
+  {
+    "id": -1,
+    "name": "Group name test",
+    "cakes": [
+      {
+        "id": 1,
+        "imagePath": {
+          "spath": "static/img/cakes/6bb9a080-f08d-4372-8497-96631484133e/cake1_s.jpg",
+          "lpaths": [
+            "static/img/cakes/6bb9a080-f08d-4372-8497-96631484133e/cake2_l.jpg"
+          ]
+        },
+        "title": "Cake test 1",
+        "description": "Description for cake test 1",
+        "cost": 1000
+      }
+    ]
+  }
+]

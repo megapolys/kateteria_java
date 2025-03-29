@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="cakeCard(cake, modalId)">
+    <!--/*@thymesVar id="cake" type="ru.dlosev.kateteria.model.CakeDto"*/-->
+    <!--/*@thymesVar id="modalId" type="java.lang.String"*/-->
+    <div class="col-xl-3" style="width: 300px;">
+        <div class="card h-100">
+            <button type="button" class="btn p-0" data-bs-toggle="modal" th:attr="data-bs-target='#' + ${modalId}">
+                <img th:attr="src=${cake.imagePath.sPath}" class="card-img-top" width="200px" height="200px" alt="...">
+            </button>
+            <div class="card-body position-relative">
+                <h5 th:text="${cake.title}"></h5>
+                <p class="card-text" th:text="${cake.description}"></p>
+                <div class="position-absolute bottom-0">
+                    <p class="card-text fs-3" th:text="${cake.cost} + ' руб/кг'"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" th:id="${modalId}" tabindex="-1" th:attr="aria-labelledby=${modalId}" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-xl-down">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"
+                     th:with="carouselId='carousel-' + ${cake.id},visible=((${cake.imagePath.LPaths}.size() > 1) ? 'visible' : 'invisible')">
+                    <div th:id="${carouselId}" class="carousel slide">
+                        <div class="carousel-indicators" th:classappend="${visible}">
+                            <button th:each="path,iter : ${cake.imagePath.LPaths}" type="button"
+                                    th:attr="data-bs-target='#' + ${carouselId},
+                                    data-bs-slide-to=${iter.index},
+                                    aria-current=${iter.first} ? 'true' : 'false',
+                                    aria-label='Slide ' + iter.index"
+                                    th:class="${iter.first} ? 'active' : ''">
+                            </button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div th:each="path,iter : ${cake.imagePath.LPaths}"
+                                 class="carousel-item" th:classappend="${iter.first} ? 'active' : ''">
+                                <img th:attr="src=${path}" class="card-img-top">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" th:classappend="${visible}" type="button"
+                                th:attr="data-bs-target='#' + ${carouselId}"
+                                data-bs-target="#` + carouselId + `"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" th:classappend="${visible}" type="button"
+                                th:attr="data-bs-target='#' + ${carouselId}"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

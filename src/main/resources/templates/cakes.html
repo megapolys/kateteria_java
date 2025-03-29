@@ -1,0 +1,33 @@
+<html th:replace="~{common.html :: layout('cakes', ~{::title}, ~{::main}, false)}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        Примеры работ
+    </title>
+</head>
+<body>
+<main>
+    <div class="container start-50">
+        <div class="row d-flex justify-content-center">
+
+            <div class="row m-3">
+                <div class="row">
+                    <div class="col d-flex justify-content-center">
+                        <h3>Примеры работ</h3>
+                    </div>
+                </div>
+                <div id="groups">
+                    <div th:each="group : ${cakes}">
+                        <h4 th:text="${group.name}"></h4>
+                        <div class="row d-flex justify-content-around gy-3">
+                            <div th:each="cake : ${group.cakes}" th:with="modalId='modal-' + ${cake.id}">
+                                <div th:replace="~{cake.html ::cakeCard (${cake}, ${modalId})}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
