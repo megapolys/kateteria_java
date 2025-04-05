@@ -20,7 +20,7 @@
                         <h4 th:text="${group.name}"></h4>
                         <div class="row d-flex justify-content-around gy-3">
                             <div th:each="cake : ${group.cakes}" th:with="modalId='modal-' + ${cake.id}">
-                                <div th:replace="~{cake.html ::cakeCard (${cake}, ${modalId})}"></div>
+                                <div th:replace="~{cake.html :: cakeCard (${cake}, ${modalId})}"></div>
                             </div>
                         </div>
                     </div>

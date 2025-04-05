@@ -1,11 +1,11 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="cakeCard(cake, modalId)">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:fragment="cakeCard(cake, modalId)">
+<div>
     <!--/*@thymesVar id="cake" type="ru.dlosev.kateteria.model.CakeDto"*/-->
     <!--/*@thymesVar id="modalId" type="java.lang.String"*/-->
     <div class="col-xl-3" style="width: 300px;">
         <div class="card h-100">
             <button type="button" class="btn p-0" data-bs-toggle="modal" th:attr="data-bs-target='#' + ${modalId}">
-                <img th:attr="src=${cake.imagePath.sPath}" class="card-img-top" width="200px" height="200px" alt="...">
+                <img th:attr="src=${cake.imagePath.SPath}" class="card-img-top" width="200px" height="200px" alt="...">
             </button>
             <div class="card-body position-relative">
                 <h5 th:text="${cake.title}"></h5>
@@ -25,7 +25,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body"
-                     th:with="carouselId='carousel-' + ${cake.id},visible=((${cake.imagePath.LPaths}.size() > 1) ? 'visible' : 'invisible')">
+                     th:with="carouselId='carousel-' + ${cake.id},
+                     visible=((${cake.imagePath.getLPaths().size()} > 1) ? 'visible' : 'invisible')">
                     <div th:id="${carouselId}" class="carousel slide">
                         <div class="carousel-indicators" th:classappend="${visible}">
                             <button th:each="path,iter : ${cake.imagePath.LPaths}" type="button"
@@ -39,7 +40,7 @@
                         <div class="carousel-inner">
                             <div th:each="path,iter : ${cake.imagePath.LPaths}"
                                  class="carousel-item" th:classappend="${iter.first} ? 'active' : ''">
-                                <img th:attr="src=${path}" class="card-img-top">
+                                <img th:attr="src=${path}" class="card-img-top" loading="lazy">
                             </div>
                         </div>
                         <button class="carousel-control-prev" th:classappend="${visible}" type="button"
