@@ -50,9 +50,9 @@ public class FileManagerImpl implements FileManager {
 		if (sPath == null) {
 			throw ReadFileException.bySPathNotFound(uuid);
 		}
-		if (lPaths.isEmpty()) {
-			throw ReadFileException.byLPathNotFound(uuid);
-		}
+//		if (lPaths.isEmpty()) {
+//			throw ReadFileException.byLPathNotFound(uuid);
+//		}
 		return ImagePathDto.builder()
 			.sPath(sPath)
 			.lPaths(lPaths)

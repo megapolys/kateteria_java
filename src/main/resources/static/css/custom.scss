@@ -10,6 +10,11 @@ $color5: #FFFAFA;
   color: $pinky;
 }
 
+.background {
+  background-color: #FFE4E1
+}
+
+
 .btn-custom {
   @include button-variant($pinky, darken($pinky, 7.5%), darken($pinky, 10%), lighten($pinky, 5%), lighten($pinky, 10%), darken($pinky, 30%));
 }
